@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="es">
 <!--
     Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
 
@@ -37,25 +38,69 @@
     * Create your own at http://cspisawesome.com
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-
+	<!-- Bootstrap CSS CDN -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Hello World</title>
+	<!-- Our Custom CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	
+    <title>CityCars AppCar</title>
 </head>
 
 <body>
-Test1
-    <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
+<script type="text/javascript">
+    var onSuccess = function(position) {
+        $("#gps").html('Latitude: '+ position.coords.latitude+'<br>'+'Longitude: '+position.coords.longitude+'<br>'+'Timestamp: '+position.timestamp+'<br>');
+    };
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        $('#gps').html('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+</script>
+	<div class="app">
+		<div id='gps'>TEST</div>
+		<img src='img/yellow.png' style='width:150px;'>
+        <h1>CityCars</h1>
+		<p>
+		<input id='pinuser' type='text' size='5' readonly>
+		</p>
+		<div id='numpad'>
+			<button type="button" id='but1' class="numpadbt btn btn-link">1</button>
+			<button type="button" id='but2' class="numpadbt btn btn-link">2</button>
+			<button type="button" id='but3' class="numpadbt btn btn-link">3</button>
+			<br>
+			<button type="button" id='but4' class="numpadbt btn btn-link">4</button>
+			<button type="button" id='but5' class="numpadbt btn btn-link">5</button>
+			<button type="button" id='but6' class="numpadbt btn btn-link">6</button>
+			<br>
+			<button type="button" id='but7' class="numpadbt btn btn-link">7</button>
+			<button type="button" id='but8' class="numpadbt btn btn-link">8</button>
+			<button type="button" id='but9' class="numpadbt btn btn-link">9</button>
+			<br>
+			<button type="button" id='borrar' class="numpadbt btn btn-link"><span class="glyphicon glyphicon-star" aria-hidden="true">Del</span></button>
+			<button type="button" id='but0' class="numpadbt btn btn-link">0</button>
+			<button type="button" id='enviar' class="numpadbt btn btn-link"><span class="glyphicon glyphicon-star" aria-hidden="true">Send</span></button>
+		</div>
+		<p><div id='inform'></div></p>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
+    <!-- jQuery CDN -->
+	<script src="js/jquery.min.js"></script>		
+    <!-- Bootstrap Js CDN -->
+	 <script src="js/bootstrap.min.js"></script>
+	<!-- Jquery Propio -->
+	<script src="js/scripts.js"></script>
 </body>
 
 </html>
